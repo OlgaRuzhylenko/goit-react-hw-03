@@ -18,12 +18,18 @@ export default function App() {
     });
   };
 
+  const handleDeleteTask = (contactId) => {
+    setContacts((prevContacts) => {
+      return prevContacts.filter((contact) => contact.id !== contactId);
+    });
+  };
+
   return (
     <div>
       <h1>Phonebook</h1>
       <ContactForm onAdd={handleAddContact} />
       <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList contacts={visibleContacts} />
+      <ContactList contacts={visibleContacts} onDelete={handleDeleteTask} />
     </div>
   );
 }
