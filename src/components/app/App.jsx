@@ -7,11 +7,22 @@ import { useState } from "react";
 
 export default function App() {
   const [contacts, setContacts] = useState(initialContacts);
+  const [filter, setFilter] = useState("");
+  const visibleContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  const handleAddContact = (newContact) => {
+    setContacts((prevContacts) => {
+      return [...prevContacts, newContact];
+    });
+  };
+
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
+      <ContactForm onAdd={handleAddContact} />
+      <SearchBox value={filter} onFilter={setFilter} />
       <ContactList contacts={contacts} />
     </div>
   );
