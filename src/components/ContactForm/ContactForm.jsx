@@ -4,8 +4,12 @@ import css from "./ContactForm.module.css";
 
 export default function ContactForm({ onAdd }) {
   const handleSubmit = (values, actions) => {
-    console.log("handleSubmit", values);
-    onAdd.values;
+    const newContact = {
+      id: nanoid(),
+      name: values.username,
+      number: values.usernumber,
+    };
+    onAdd(newContact);
     actions.resetForm();
   };
   return (
@@ -13,7 +17,6 @@ export default function ContactForm({ onAdd }) {
       initialValues={{
         username: "",
         usernumber: "",
-        id: nanoid(),
       }}
       onSubmit={handleSubmit}
     >

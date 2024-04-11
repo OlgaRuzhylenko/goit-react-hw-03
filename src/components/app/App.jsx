@@ -23,7 +23,7 @@ export default function App() {
       <h1>Phonebook</h1>
       <ContactForm onAdd={handleAddContact} />
       <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList contacts={contacts} />
+      <ContactList contacts={visibleContacts} />
     </div>
   );
 }
