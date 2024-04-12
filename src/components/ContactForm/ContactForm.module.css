@@ -2,11 +2,13 @@
     line-height: 1;
         padding: 8px;
         border: 2px solid black;
-        border-radius: 10px;
+        border-radius: 0px;
         display: flex;
         flex-direction: column;
         gap: 10px;
        max-width: 20pc;
+
+       margin-bottom: 20px;
 }
 .item {
     display: flex;

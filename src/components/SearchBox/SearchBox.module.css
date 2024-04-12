@@ -1,6 +1,8 @@
 .container {
-max-width: 20pc;
+    width: 330px; 
+    margin-bottom: 20px;
 }
-.className {
-max-width: 100%;
+.searchInput {
+width: 100%;
+box-sizing: border-box 
 }
