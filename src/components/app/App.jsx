@@ -4,9 +4,16 @@ import ContactList from "../ContactList/ContactList";
 import initialContacts from "../contacts.json";
 import css from "./App.module.css";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export default function App() {
-  const [contacts, setContacts] = useState(initialContacts);
+  const [contacts, setContacts] = useState(() => {
+    const savedContacts = localStorage.getItem("updatedContacts");
+    if (savedContacts !== null) {
+      return JSON.parse(savedContacts);
+    }
+    return initialContacts;
+  });
   const [filter, setFilter] = useState("");
   const visibleContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
@@ -23,6 +30,10 @@ export default function App() {
       return prevContacts.filter((contact) => contact.id !== contactId);
     });
   };
+
+  useEffect(() => {
+    localStorage.setItem("updatedContacts", JSON.stringify(contacts));
+  }, [contacts]);
 
   return (
     <div>

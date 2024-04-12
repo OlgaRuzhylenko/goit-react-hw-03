@@ -20,17 +20,19 @@ export default function ContactForm({ onAdd }) {
       }}
       onSubmit={handleSubmit}
     >
-      <Form>
-        <div>
+      <Form className={css.form}>
+        <div className={css.item}>
           <label htmlFor="">Name</label>
           <Field name="username" />
         </div>
-        <div>
+        <div className={css.item}>
           <label htmlFor="">Number</label>
           <Field name="usernumber" />
         </div>
 
-        <button type="submit">Add contact</button>
+        <button type="submit" className={css.formBtn}>
+          Add contact
+        </button>
       </Form>
     </Formik>
   );
